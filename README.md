@@ -30,6 +30,17 @@ Ledgerly is a cross-platform mobile application that allows users to record inco
 - **Date Handling**: intl
 
 ## 📂 Project Structure
+lib/
+
+├── main.dart
+
+├── models/
+
+├── screens/
+
+├── state/
+
+└── theme/
 ## Getting Started
 
 This project is a starting point for a Flutter application.
