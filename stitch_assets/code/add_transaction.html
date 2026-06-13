@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ledgerly - Add Transaction</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#c8eaff",
+                    "on-secondary-fixed-variant": "#2a4a5e",
+                    "secondary-container": "#1a3a4e",
+                    "primary": "#7dd3fc",
+                    "on-tertiary": "#1a002e",
+                    "inverse-on-surface": "#0a0e1a",
+                    "surface-dim": "#0f1524",
+                    "surface-container-low": "#111828",
+                    "on-primary-container": "#c8eaff",
+                    "on-error-container": "#ffb3b3",
+                    "inverse-primary": "#0a4c6e",
+                    "surface-tint": "#7dd3fc",
+                    "surface-variant": "#1a2438",
+                    "outline": "#4a6070",
+                    "on-surface-variant": "#a0b4c4",
+                    "error-container": "#3d1414",
+                    "surface-container-high": "#1a2438",
+                    "surface-container-lowest": "#0a0e1a",
+                    "secondary-fixed": "#c0d8e8",
+                    "surface-bright": "#1a2438",
+                    "on-tertiary-fixed": "#1a002e",
+                    "surface-container": "#141c2e",
+                    "on-primary-fixed": "#001f2e",
+                    "inverse-surface": "#e0e8f0",
+                    "surface-container-highest": "#202c42",
+                    "on-secondary-container": "#c0d8e8",
+                    "on-primary": "#001f2e",
+                    "primary-fixed-dim": "#7dd3fc",
+                    "error": "#ff6b6b",
+                    "tertiary-fixed": "#e8d0ff",
+                    "primary-container": "#0e4d6e",
+                    "on-secondary": "#001f2e",
+                    "on-tertiary-container": "#e8d0ff",
+                    "on-background": "#e0e8f0",
+                    "background": "#0a0e1a",
+                    "secondary-fixed-dim": "#88b4cc",
+                    "secondary": "#88b4cc",
+                    "tertiary-container": "#3d2060",
+                    "on-tertiary-fixed-variant": "#4d2a73",
+                    "on-surface": "#e0e8f0",
+                    "on-secondary-fixed": "#0d1f2b",
+                    "tertiary": "#c8a0f0",
+                    "on-error": "#1a0000",
+                    "tertiary-fixed-dim": "#c8a0f0",
+                    "on-primary-fixed-variant": "#004d73",
+                    "outline-variant": "#2a3a48",
+                    "surface": "#0f1524"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "display": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0a0e1a;
+            color: #e0e8f0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(15, 21, 36, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(125, 211, 252, 0.1);
+        }
+        .glass-panel-elevated {
+            background: rgba(15, 21, 36, 0.75);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(125, 211, 252, 0.15);
+        }
+        .glow-subtle {
+            box-shadow: 0 0 30px rgba(125, 211, 252, 0.05);
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(125, 211, 252, 0.2);
+        }
+        .active-tab {
+            background: rgba(125, 211, 252, 0.15);
+            color: #7dd3fc;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 dark:bg-surface-dim/60 backdrop-blur-xl border-b border-primary/10 shadow-[0_0_30px_rgba(125,211,252,0.05)] flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-3">
+<button class="active:scale-95 transition-transform hover:bg-primary/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tighter text-on-surface dark:text-on-background">Ledgerly</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-primary/20">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXUUKBgAin6ZBD88KzzSOW5xfhnQGjTpF2yl89FyFVnLFOr6t53IJCPwV9NkbYDOt55_nvc1Pt5za3ZCqVuB3tiYyMzhhIX7hfFL9DlTe8UJEBywRI2-oKwpEKaSmFswyoVl2tVFywQE9I3xIsjzV3ZcMB4m131vFYVrPs1-S43Unp5X-6OVrQnK1qWgvBG2Se0xPD0a6IinzM_j2-l7IYXoi9s0CQBHCf5Dg8oESE0R6bUcc0WsM--KY0OVWYYgl3I8NUZWDxG80"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-lg mx-auto space-y-8">
+<!-- Animated Background Element -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
+
+</div>
+<!-- Segmented Toggle -->
+<div class="glass-panel p-1 rounded-xl flex items-center gap-1">
+<button class="flex-1 py-3 text-center font-semibold rounded-lg transition-all active-tab" id="expenseToggle" onclick="toggleType('expense')">
+                Expense
+            </button>
+<button class="flex-1 py-3 text-center font-semibold rounded-lg transition-all text-on-surface-variant hover:bg-white/5" id="incomeToggle" onclick="toggleType('income')">
+                Income
+            </button>
+</div>
+<!-- Amount Input Section -->
+<div class="text-center space-y-2">
+<p class="text-on-surface-variant text-sm font-medium uppercase tracking-widest">Enter Amount</p>
+<div class="relative inline-block w-full">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 text-4xl font-light text-primary/50">$</span>
+<input autofocus="" class="w-full bg-transparent border-none text-center text-6xl font-headline font-bold text-on-surface tracking-tighter focus:ring-0 placeholder:text-surface-variant" placeholder="0.00" step="0.01" type="number"/>
+</div>
+</div>
+<!-- Category Grid -->
+<section class="space-y-4">
+<h2 class="text-on-surface-variant text-xs font-semibold uppercase tracking-widest">Category</h2>
+<div class="grid grid-cols-4 gap-3">
+<!-- Food -->
+<button class="glass-panel p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-primary/10 transition-all border-primary/20 group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">restaurant</span>
+<span class="text-[10px] font-medium text-on-surface-variant">Food</span>
+</button>
+<!-- Transport -->
+<button class="glass-panel p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-primary/10 transition-all border-primary/5 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">commute</span>
+<span class="text-[10px] font-medium text-on-surface-variant">Transport</span>
+</button>
+<!-- Shopping -->
+<button class="glass-panel p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-primary/10 transition-all border-primary/5 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">shopping_bag</span>
+<span class="text-[10px] font-medium text-on-surface-variant">Shop</span>
+</button>
+<!-- Bills -->
+<button class="glass-panel p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-primary/10 transition-all border-primary/5 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">payments</span>
+<span class="text-[10px] font-medium text-on-surface-variant">Bills</span>
+</button>
+<!-- More -->
+<button class="glass-panel p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-primary/10 transition-all border-primary/5 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">grid_view</span>
+<span class="text-[10px] font-medium text-on-surface-variant">Others</span>
+</button>
+</div>
+</section>
+<!-- Details Form -->
+<div class="space-y-4">
+<!-- Date Picker -->
+<div class="glass-panel p-4 rounded-2xl flex items-center justify-between group cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim">calendar_today</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Date</p>
+<p class="text-sm font-medium">October 24, 2023</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Note Field -->
+<div class="glass-panel p-4 rounded-2xl space-y-2 focus-within:border-primary/40 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim">notes</span>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Notes</p>
+</div>
+<textarea class="w-full bg-transparent border-none focus:ring-0 p-0 text-sm text-on-surface placeholder:text-on-surface-variant/40 resize-none" placeholder="What was this for?" rows="2"></textarea>
+</div>
+<!-- Attach Receipt -->
+<button class="w-full glass-panel-elevated p-4 rounded-2xl flex items-center justify-center gap-2 border-dashed border-primary/30 hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined text-primary">add_a_photo</span>
+<span class="text-sm font-medium text-primary">Attach Receipt</span>
+</button>
+</div>
+<!-- Save Button -->
+<div class="pt-4">
+<button class="w-full bg-primary text-on-primary font-bold py-4 rounded-2xl shadow-lg shadow-primary/20 active:scale-[0.98] transition-all hover:brightness-110 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                Save Transaction
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation (Shared Component) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 dark:bg-surface-dim/60 backdrop-blur-2xl border-t border-primary/15 shadow-[0_-4px_24px_rgba(0,0,0,0.2)] flex justify-around items-center px-2 py-3 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 dark:text-on-surface-variant/70 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 dark:text-on-surface-variant/70 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label text-[10px] font-medium">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary/10 rounded-xl px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="font-label text-[10px] font-medium">Add</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 dark:text-on-surface-variant/70 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-label text-[10px] font-medium">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 dark:text-on-surface-variant/70 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+<script>
+        function toggleType(type) {
+            const expenseBtn = document.getElementById('expenseToggle');
+            const incomeBtn = document.getElementById('incomeToggle');
+            const primaryColor = '#7dd3fc';
+
+            if (type === 'expense') {
+                expenseBtn.classList.add('active-tab');
+                expenseBtn.classList.remove('text-on-surface-variant', 'hover:bg-white/5');
+                incomeBtn.classList.remove('active-tab');
+                incomeBtn.classList.add('text-on-surface-variant', 'hover:bg-white/5');
+            } else {
+                incomeBtn.classList.add('active-tab');
+                incomeBtn.classList.remove('text-on-surface-variant', 'hover:bg-white/5');
+                expenseBtn.classList.remove('active-tab');
+                expenseBtn.classList.add('text-on-surface-variant', 'hover:bg-white/5');
+            }
+        }
+
+        // Simple interactive feedback for category buttons
+        const categoryButtons = document.querySelectorAll('section button');
+        categoryButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryButtons.forEach(b => {
+                    b.classList.remove('bg-primary/10', 'border-primary/40');
+                    b.classList.add('border-primary/5');
+                    const icon = b.querySelector('.material-symbols-outlined');
+                    icon.style.fontVariationSettings = "'FILL' 0";
+                    icon.classList.remove('text-primary');
+                    icon.classList.add('text-on-surface-variant');
+                });
+                btn.classList.add('bg-primary/10', 'border-primary/40');
+                btn.classList.remove('border-primary/5');
+                const icon = btn.querySelector('.material-symbols-outlined');
+                icon.style.fontVariationSettings = "'FILL' 1";
+                icon.classList.remove('text-on-surface-variant');
+                icon.classList.add('text-primary');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ledgerly | Monthly Budget</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#c8eaff",
+                    "on-secondary-fixed-variant": "#2a4a5e",
+                    "secondary-container": "#1a3a4e",
+                    "primary": "#7dd3fc",
+                    "on-tertiary": "#1a002e",
+                    "inverse-on-surface": "#0a0e1a",
+                    "surface-dim": "#0f1524",
+                    "surface-container-low": "#111828",
+                    "on-primary-container": "#c8eaff",
+                    "on-error-container": "#ffb3b3",
+                    "inverse-primary": "#0a4c6e",
+                    "surface-tint": "#7dd3fc",
+                    "surface-variant": "#1a2438",
+                    "outline": "#4a6070",
+                    "on-surface-variant": "#a0b4c4",
+                    "error-container": "#3d1414",
+                    "surface-container-high": "#1a2438",
+                    "surface-container-lowest": "#0a0e1a",
+                    "secondary-fixed": "#c0d8e8",
+                    "surface-bright": "#1a2438",
+                    "on-tertiary-fixed": "#1a002e",
+                    "surface-container": "#141c2e",
+                    "on-primary-fixed": "#001f2e",
+                    "inverse-surface": "#e0e8f0",
+                    "surface-container-highest": "#202c42",
+                    "on-secondary-container": "#c0d8e8",
+                    "on-primary": "#001f2e",
+                    "primary-fixed-dim": "#7dd3fc",
+                    "error": "#ff6b6b",
+                    "tertiary-fixed": "#e8d0ff",
+                    "primary-container": "#0e4d6e",
+                    "on-secondary": "#001f2e",
+                    "on-tertiary-container": "#e8d0ff",
+                    "on-background": "#e0e8f0",
+                    "background": "#0a0e1a",
+                    "secondary-fixed-dim": "#88b4cc",
+                    "secondary": "#88b4cc",
+                    "tertiary-container": "#3d2060",
+                    "on-tertiary-fixed-variant": "#4d2a73",
+                    "on-surface": "#e0e8f0",
+                    "on-secondary-fixed": "#0d1f2b",
+                    "tertiary": "#c8a0f0",
+                    "on-error": "#1a0000",
+                    "tertiary-fixed-dim": "#c8a0f0",
+                    "on-primary-fixed-variant": "#004d73",
+                    "outline-variant": "#2a3a48",
+                    "surface": "#0f1524"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "display": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            },
+          },
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #0a0e1a;
+            color: #e0e8f0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(15, 21, 36, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(125, 211, 252, 0.1);
+        }
+        .glass-panel-elevated {
+            background: rgba(15, 21, 36, 0.75);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(125, 211, 252, 0.15);
+        }
+        .ice-gradient {
+            background: linear-gradient(90deg, #7dd3fc 0%, #c8a0f0 100%);
+        }
+        .glow-soft {
+            box-shadow: 0 0 30px rgba(125, 211, 252, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(125, 211, 252, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-24 md:pb-0 md:pl-0">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 dark:bg-surface-dim/60 backdrop-blur-xl border-b border-primary/10 shadow-[0_0_30px_rgba(125,211,252,0.05)]">
+<div class="flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden border border-primary/20">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a person with short hair, wearing a dark turtleneck. The lighting is moody and cinematic with cool blue rim lighting, set against a dark, out-of-focus architectural background with glowing ice-blue accents. The visual style is premium, sharp, and perfectly aligned with a futuristic dark-mode financial application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwITyBrEPKvwWow6LwLjBcT5TVjH2obIoleKfAHwzqgwnfeTTyYVOHGUbV6guNh-pjaq8v5qby5Nv4L41FWSsBkXrxZ8l4WbC55xFGfzVfixXCo113amJNjsMJwKbwRpNNPhAjxGUfxQyREan5XXK-WVLCSYQByZ3XDVg8hi7DPpLIGeE9bOfGPaywaSiXVJbwLbfdqq2QV2knslHf90HsigCKIfVUA0avp9VgXCQBb00Ei1GkaVGcfr1JQjpI5CGqk5gowbboiro"/>
+</div>
+<h1 class="text-xl font-bold tracking-tighter text-on-surface dark:text-on-background font-headline">Ledgerly</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-primary/10 transition-colors duration-300 text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-24 px-6 max-w-5xl mx-auto space-y-8 relative">
+<!-- Background Animation Overlay -->
+<div class="fixed inset-0 -z-10 opacity-20 pointer-events-none">
+
+</div>
+<!-- Budget Hero Summary -->
+<section class="glass-panel-elevated p-8 rounded-xl glow-soft relative overflow-hidden">
+<div class="absolute top-0 right-0 p-6 opacity-10">
+<span class="material-symbols-outlined text-[120px]">account_balance_wallet</span>
+</div>
+<div class="relative z-10">
+<p class="text-on-surface-variant text-sm font-medium tracking-wide uppercase mb-2">Total Monthly Budget</p>
+<div class="flex items-baseline gap-3">
+<h2 class="text-4xl font-extrabold tracking-tight text-primary">$4,250.00</h2>
+<span class="text-on-surface-variant/60 text-lg">/ $5,000.00</span>
+</div>
+<div class="mt-6 w-full h-3 bg-surface-variant rounded-full overflow-hidden border border-white/5">
+<div class="h-full ice-gradient shadow-[0_0_15px_rgba(125,211,252,0.4)]" style="width: 85%"></div>
+</div>
+<div class="mt-4 flex justify-between text-xs font-medium">
+<span class="text-on-surface-variant">85% utilized</span>
+<span class="text-tertiary">12 days remaining</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 glass-panel p-6 rounded-xl flex flex-col justify-between min-h-[160px]">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="text-[10px] px-2 py-1 bg-error-container text-error rounded-full font-bold">WARNING</span>
+</div>
+<div>
+<h3 class="text-on-surface-variant text-sm mb-1">Highest Spending</h3>
+<p class="text-2xl font-bold">Food &amp; Dining</p>
+<p class="text-on-surface-variant/70 text-xs mt-1">22% increase from last month</p>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex flex-col items-center justify-center text-center">
+<div class="w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center mb-4 border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary">savings</span>
+</div>
+<h3 class="text-on-surface-variant text-sm mb-1">Potential Savings</h3>
+<p class="text-xl font-bold text-on-surface">$750.00</p>
+</div>
+</div>
+<!-- Budget Categories List -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-lg text-on-surface px-1">Categories</h3>
+<button class="text-primary text-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- Food Category (High Usage) -->
+<div class="glass-panel p-5 rounded-xl transition-all duration-300 hover:border-primary/30 group">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">restaurant</span>
+</div>
+<div>
+<h4 class="font-semibold text-on-surface">Food &amp; Dining</h4>
+<p class="text-xs text-on-surface-variant">42 transactions</p>
+</div>
+</div>
+<div class="text-right">
+<div class="flex items-center gap-2 justify-end">
+<span class="material-symbols-outlined text-error text-sm" title="Limit approaching">warning</span>
+<p class="font-bold text-on-surface">$1,120.00</p>
+</div>
+<p class="text-[10px] text-on-surface-variant">Limit: $1,200.00</p>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 93%"></div>
+</div>
+</div>
+<!-- Entertainment Category -->
+<div class="glass-panel p-5 rounded-xl transition-all duration-300 hover:border-primary/30 group">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">movie</span>
+</div>
+<div>
+<h4 class="font-semibold text-on-surface">Entertainment</h4>
+<p class="text-xs text-on-surface-variant">12 transactions</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">$340.00</p>
+<p class="text-[10px] text-on-surface-variant">Limit: $500.00</p>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full ice-gradient rounded-full" style="width: 68%"></div>
+</div>
+</div>
+<!-- Shopping Category -->
+<div class="glass-panel p-5 rounded-xl transition-all duration-300 hover:border-primary/30 group">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">shopping_bag</span>
+</div>
+<div>
+<h4 class="font-semibold text-on-surface">Shopping</h4>
+<p class="text-xs text-on-surface-variant">8 transactions</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">$850.00</p>
+<p class="text-[10px] text-on-surface-variant">Limit: $1,000.00</p>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full ice-gradient rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<!-- Transportation Category -->
+<div class="glass-panel p-5 rounded-xl transition-all duration-300 hover:border-primary/30 group">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">commute</span>
+</div>
+<div>
+<h4 class="font-semibold text-on-surface">Transportation</h4>
+<p class="text-xs text-on-surface-variant">15 transactions</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">$120.00</p>
+<p class="text-[10px] text-on-surface-variant">Limit: $400.00</p>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full ice-gradient rounded-full" style="width: 30%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Insights Section -->
+<section class="glass-panel p-6 rounded-xl border-tertiary/20">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-tertiary">lightbulb</span>
+<h3 class="font-bold text-on-surface">Spending Insight</h3>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                You've spent <span class="text-error font-bold">15% more</span> on subscription services this month. Canceling unused plans could save you up to <span class="text-primary font-bold">$45.00</span> before your next billing cycle.
+            </p>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 md:bottom-8 md:right-8 z-[60] w-14 h-14 rounded-full ice-gradient shadow-[0_8px_32px_rgba(125,211,252,0.4)] flex items-center justify-center text-on-primary active:scale-90 transition-transform duration-300 hover:scale-110">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 dark:bg-surface-dim/60 backdrop-blur-2xl border-t border-primary/15 shadow-[0_-4px_24px_rgba(0,0,0,0.2)]">
+<div class="flex justify-around items-center w-full px-2 py-3 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 dark:text-on-surface-variant/70 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label text-[10px] font-medium mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 dark:text-on-surface-variant/70 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label text-[10px] font-medium mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 dark:text-on-surface-variant/70 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label text-[10px] font-medium mt-1">Add</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary/10 rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="font-label text-[10px] font-medium mt-1">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 dark:text-on-surface-variant/70 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label text-[10px] font-medium mt-1">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for progress bars on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.h-full');
+            bars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.transition = 'width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+
+        // Sticky header background shift on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('backdrop-blur-2xl');
+                header.classList.add('bg-surface-dim/80');
+            } else {
+                header.classList.remove('backdrop-blur-2xl');
+                header.classList.remove('bg-surface-dim/80');
+            }
+        });
+    </script>
+</body></html>

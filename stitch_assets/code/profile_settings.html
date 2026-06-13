@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Ledgerly - Profile &amp; Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#c8eaff",
+                    "on-secondary-fixed-variant": "#2a4a5e",
+                    "secondary-container": "#1a3a4e",
+                    "primary": "#7dd3fc",
+                    "on-tertiary": "#1a002e",
+                    "inverse-on-surface": "#0a0e1a",
+                    "surface-dim": "#0f1524",
+                    "surface-container-low": "#111828",
+                    "on-primary-container": "#c8eaff",
+                    "on-error-container": "#ffb3b3",
+                    "inverse-primary": "#0a4c6e",
+                    "surface-tint": "#7dd3fc",
+                    "surface-variant": "#1a2438",
+                    "outline": "#4a6070",
+                    "on-surface-variant": "#a0b4c4",
+                    "error-container": "#3d1414",
+                    "surface-container-high": "#1a2438",
+                    "surface-container-lowest": "#0a0e1a",
+                    "secondary-fixed": "#c0d8e8",
+                    "surface-bright": "#1a2438",
+                    "on-tertiary-fixed": "#1a002e",
+                    "surface-container": "#141c2e",
+                    "on-primary-fixed": "#001f2e",
+                    "inverse-surface": "#e0e8f0",
+                    "surface-container-highest": "#202c42",
+                    "on-secondary-container": "#c0d8e8",
+                    "on-primary": "#001f2e",
+                    "primary-fixed-dim": "#7dd3fc",
+                    "error": "#ff6b6b",
+                    "tertiary-fixed": "#e8d0ff",
+                    "primary-container": "#0e4d6e",
+                    "on-secondary": "#001f2e",
+                    "on-tertiary-container": "#e8d0ff",
+                    "on-background": "#e0e8f0",
+                    "background": "#0a0e1a",
+                    "secondary-fixed-dim": "#88b4cc",
+                    "secondary": "#88b4cc",
+                    "tertiary-container": "#3d2060",
+                    "on-tertiary-fixed-variant": "#4d2a73",
+                    "on-surface": "#e0e8f0",
+                    "on-secondary-fixed": "#0d1f2b",
+                    "tertiary": "#c8a0f0",
+                    "on-error": "#1a0000",
+                    "tertiary-fixed-dim": "#c8a0f0",
+                    "on-primary-fixed-variant": "#004d73",
+                    "outline-variant": "#2a3a48",
+                    "surface": "#0f1524"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "display": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0e1a;
+            color: #e0e8f0;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(15, 21, 36, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(125, 211, 252, 0.1);
+            box-shadow: 0 0 30px rgba(125, 211, 252, 0.05);
+        }
+        .glass-card-elevated {
+            background: rgba(15, 21, 36, 0.75);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(125, 211, 252, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .logout-glass {
+            background: rgba(255, 107, 107, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 107, 107, 0.2);
+        }
+        .logout-glass:hover {
+            background: rgba(255, 107, 107, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 dark:bg-surface-dim/60 backdrop-blur-xl border-b border-primary/10 shadow-[0_0_30px_rgba(125,211,252,0.05)]">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-5xl mx-auto">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtxR_xybqZZLT49rMcK3-9QV8x6rOi0lDPNXGPsOHArBPcSXaD7S400MYtsLOzh54jBHuQxqb6QT6ZnIpii5PlePtnF-tD_nd6BXtggheSH1kwYwLLyxPjl8W90rNs9TLqaJmyyVHYvg8XUAQ9Urlt3wfogB99q9FHN22grm1mCOV7Wvm0EiCeNxIc7rXEXFZk_dswJYQHbQo4nwQEw0EqpEfQs-lzz-iF7pQ_kyU8z6OzC6ATCg1d2PuJjb4iRuGBOezrbfHY84A"/>
+</div>
+<h1 class="text-xl font-bold tracking-tighter text-on-surface dark:text-on-background font-headline">Ledgerly</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-primary/10 transition-colors duration-300 active:scale-95 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto">
+<!-- Animated Background Decor -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-tertiary/5 rounded-full blur-[100px]"></div>
+</div>
+<!-- User Profile Section -->
+<section class="mb-10 text-center">
+<div class="relative inline-block group">
+<div class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-primary to-tertiary mb-4 mx-auto transition-transform duration-500 group-hover:scale-105">
+<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
+<img alt="Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbSkiCD1XV8ixvM-xcKMWxOSWcG15IfLmI680WREeeUWAYLVU07LDPwHoTBllKwlcCfI0R-tViPo84t8Lfx1WUmiCBlEljS3RaXL-PsP7IVlOzzdmeK2JGQ61rbEmhib6A6PiIs8FVfSS3nYwl130ETDIi-132H0rFAuJGiAScvP-iJwaC-h4n6F_iDU9nUobadxeQup1wpFYzCgqenivjQ6sGhDbT-636xXNCcRz7i_K1LIIqBcrY7ZdOqhItvE2Hc9Rx0BdJ6qE"/>
+</div>
+</div>
+<div class="absolute bottom-4 right-0 bg-primary p-1.5 rounded-full shadow-lg border-2 border-surface-dim">
+<span class="material-symbols-outlined text-[14px] text-on-primary font-bold" data-icon="edit">edit</span>
+</div>
+</div>
+<h2 class="text-2xl font-semibold text-on-surface tracking-tight mb-1">Felix Henderson</h2>
+<p class="text-on-surface-variant font-body text-sm">felix.ledgerly@icloud.com</p>
+</section>
+<!-- Settings Groups -->
+<div class="space-y-6">
+<!-- Preferences Group -->
+<div class="space-y-3">
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary/60 px-4">Preferences</h3>
+<div class="glass-card rounded-xl overflow-hidden divide-y divide-primary/5">
+<!-- Currency Selector -->
+<div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="text-sm font-medium">Currency Selection</p>
+<p class="text-xs text-on-surface-variant">USD ($)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/40 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Theme Toggle -->
+<div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded-lg bg-tertiary/10 text-tertiary">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</div>
+<div>
+<p class="text-sm font-medium">Glacier Theme</p>
+<p class="text-xs text-on-surface-variant">Dark Mode Active</p>
+</div>
+</div>
+<div class="w-12 h-6 bg-primary/20 rounded-full relative border border-primary/20 flex items-center px-1">
+<div class="w-4 h-4 bg-primary rounded-full absolute right-1"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Configuration Group -->
+<div class="space-y-3">
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary/60 px-4">System</h3>
+<div class="glass-card rounded-xl overflow-hidden divide-y divide-primary/5">
+<!-- Notifications -->
+<div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded-lg bg-on-surface-variant/10 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</div>
+<p class="text-sm font-medium">Notification Settings</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/40 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Backup -->
+<div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded-lg bg-on-surface-variant/10 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="cloud_sync">cloud_sync</span>
+</div>
+<p class="text-sm font-medium">Backup Options</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/40 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Account Actions -->
+<div class="pt-6">
+<button class="w-full logout-glass py-4 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-95 text-error font-medium">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                    Logout
+                </button>
+<p class="text-center text-[10px] text-on-surface-variant/30 mt-8 font-label">LEDGERLY PRO v2.4.1 (ALPHA)</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface/60 dark:bg-surface-dim/60 backdrop-blur-2xl border-t border-primary/15 shadow-[0_-4px_24px_rgba(0,0,0,0.2)] rounded-t-xl">
+<div class="flex justify-around items-center w-full px-2 py-3 pb-safe max-w-5xl mx-auto">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="receipt_long">receipt_long</span>
+<span class="font-label text-[10px] font-medium">History</span>
+</a>
+<button class="relative -top-6 w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-[0_8px_20px_rgba(125,211,252,0.3)] flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl font-bold" data-icon="add">add</span>
+</button>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="leaderboard">leaderboard</span>
+<span class="font-label text-[10px] font-medium">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary/10 rounded-xl px-3 py-1 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-0.5" data-icon="person">person</span>
+<span class="font-label text-[10px] font-medium">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Lightweight Interactive Glow Follower Script -->
+<div class="fixed w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none -z-0 opacity-0 transition-opacity duration-700" id="glow"></div>
+<script>
+        const glow = document.getElementById('glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.opacity = '1';
+            const x = e.clientX;
+            const y = e.clientY;
+            glow.style.transform = `translate(${x - 128}px, ${y - 128}px)`;
+        });
+
+        // Toggle state simulation for UI polish
+        const themeToggle = document.querySelector('.w-12.h-6');
+        themeToggle.addEventListener('click', () => {
+            const dot = themeToggle.querySelector('.w-4');
+            dot.classList.toggle('right-1');
+            dot.classList.toggle('left-1');
+            themeToggle.classList.toggle('bg-primary/20');
+            themeToggle.classList.toggle('bg-on-surface-variant/10');
+        });
+    </script>
+</body></html>

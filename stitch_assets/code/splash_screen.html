@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ledgerly | Frozen Light</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#c8eaff",
+                    "on-secondary-fixed-variant": "#2a4a5e",
+                    "secondary-container": "#1a3a4e",
+                    "primary": "#7dd3fc",
+                    "on-tertiary": "#1a002e",
+                    "inverse-on-surface": "#0a0e1a",
+                    "surface-dim": "#0f1524",
+                    "surface-container-low": "#111828",
+                    "on-primary-container": "#c8eaff",
+                    "on-error-container": "#ffb3b3",
+                    "inverse-primary": "#0a4c6e",
+                    "surface-tint": "#7dd3fc",
+                    "surface-variant": "#1a2438",
+                    "outline": "#4a6070",
+                    "on-surface-variant": "#a0b4c4",
+                    "error-container": "#3d1414",
+                    "surface-container-high": "#1a2438",
+                    "surface-container-lowest": "#0a0e1a",
+                    "secondary-fixed": "#c0d8e8",
+                    "surface-bright": "#1a2438",
+                    "on-tertiary-fixed": "#1a002e",
+                    "surface-container": "#141c2e",
+                    "on-primary-fixed": "#001f2e",
+                    "inverse-surface": "#e0e8f0",
+                    "surface-container-highest": "#202c42",
+                    "on-secondary-container": "#c0d8e8",
+                    "on-primary": "#001f2e",
+                    "primary-fixed-dim": "#7dd3fc",
+                    "error": "#ff6b6b",
+                    "tertiary-fixed": "#e8d0ff",
+                    "primary-container": "#0e4d6e",
+                    "on-secondary": "#001f2e",
+                    "on-tertiary-container": "#e8d0ff",
+                    "on-background": "#e0e8f0",
+                    "background": "#0a0e1a",
+                    "secondary-fixed-dim": "#88b4cc",
+                    "secondary": "#88b4cc",
+                    "tertiary-container": "#3d2060",
+                    "on-tertiary-fixed-variant": "#4d2a73",
+                    "on-surface": "#e0e8f0",
+                    "on-secondary-fixed": "#0d1f2b",
+                    "tertiary": "#c8a0f0",
+                    "on-error": "#1a0000",
+                    "tertiary-fixed-dim": "#c8a0f0",
+                    "on-primary-fixed-variant": "#004d73",
+                    "outline-variant": "#2a3a48",
+                    "surface": "#0f1524"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "display": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0e1a;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .glass-card {
+            background: rgba(15, 21, 36, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(125, 211, 252, 0.1);
+        }
+
+        .ice-glow {
+            box-shadow: 0 0 40px rgba(125, 211, 252, 0.15);
+        }
+
+        .shimmer {
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(125, 211, 252, 0.05) 50%,
+                transparent 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .spinner-glass {
+            border: 3px solid rgba(125, 211, 252, 0.1);
+            border-top: 3px solid #7dd3fc;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary/30">
+<!-- Atmospheric Background Animation -->
+<div class="fixed inset-0 z-0">
+
+<!-- Subtle Radial Glows -->
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-tertiary/5 blur-[120px]"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 flex flex-col items-center justify-center min-h-screen p-6 overflow-hidden">
+<!-- Splash Container -->
+<div class="flex flex-col items-center space-y-12 fade-in">
+<!-- Logo Section -->
+<div class="relative group">
+<!-- Outer Glow -->
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+<!-- Stylized 'L' Logo -->
+<div class="w-32 h-32 glass-card rounded-3xl flex items-center justify-center relative overflow-hidden float ice-glow border-primary/20">
+<div class="absolute inset-0 shimmer"></div>
+<span class="text-7xl font-black text-primary drop-shadow-[0_0_15px_rgba(125,211,252,0.6)] tracking-tighter select-none">
+                        L
+                    </span>
+<!-- Translucent overlay for depth -->
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent pointer-events-none"></div>
+</div>
+</div>
+<!-- Typography Section -->
+<div class="text-center space-y-2">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-on-surface flex items-center justify-center gap-1">
+                    Ledgerly
+                </h1>
+<p class="text-on-surface-variant font-medium tracking-widest text-xs uppercase opacity-60">
+                    Financial Clarity Redefined
+                </p>
+</div>
+<!-- Loading Interaction -->
+<div class="flex flex-col items-center space-y-6 pt-4">
+<!-- Spinner -->
+<div class="spinner-glass"></div>
+<!-- Status Text -->
+<div class="flex flex-col items-center gap-1">
+<span class="text-[10px] font-semibold text-primary/70 tracking-widest uppercase transition-all duration-500" id="loading-text">
+                        Initializing Core
+                    </span>
+<!-- Progress Bar (Subtle) -->
+<div class="w-24 h-[1px] bg-surface-variant rounded-full overflow-hidden mt-2">
+<div class="h-full bg-primary/50 transition-all duration-300 ease-out" id="progress-bar" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Accents -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-8 opacity-30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="text-[9px] font-bold uppercase tracking-[0.2em]">Encrypted</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+<span class="text-[9px] font-bold uppercase tracking-[0.2em]">Synced</span>
+</div>
+</div>
+</main>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loadingText = document.getElementById('loading-text');
+            const progressBar = document.getElementById('progress-bar');
+            
+            const states = [
+                "Initializing Core",
+                "Securing Vault",
+                "Fetching Ledgers",
+                "Frozen Light Active",
+                "Ready"
+            ];
+            
+            let currentIdx = 0;
+            let progress = 0;
+
+            const updateLoading = () => {
+                if (currentIdx < states.length) {
+                    loadingText.textContent = states[currentIdx];
+                    currentIdx++;
+                }
+                
+                if (progress < 100) {
+                    // Simulated non-linear progress
+                    progress += Math.floor(Math.random() * 15) + 5;
+                    if (progress > 100) progress = 100;
+                    progressBar.style.width = `${progress}%`;
+                    
+                    if (progress < 100) {
+                        setTimeout(updateLoading, 800 + Math.random() * 1000);
+                    }
+                }
+            };
+
+            // Initial delay to feel premium
+            setTimeout(updateLoading, 500);
+        });
+
+        // Parallax Mouse Effect
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) / 50;
+            const moveY = (e.clientY - window.innerHeight / 2) / 50;
+            
+            const logo = document.querySelector('.w-32');
+            if (logo) {
+                logo.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+    </script>
+</body></html>

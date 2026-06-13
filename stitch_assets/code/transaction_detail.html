@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ledgerly - Transaction Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#c8eaff",
+                    "on-secondary-fixed-variant": "#2a4a5e",
+                    "secondary-container": "#1a3a4e",
+                    "primary": "#7dd3fc",
+                    "on-tertiary": "#1a002e",
+                    "inverse-on-surface": "#0a0e1a",
+                    "surface-dim": "#0f1524",
+                    "surface-container-low": "#111828",
+                    "on-primary-container": "#c8eaff",
+                    "on-error-container": "#ffb3b3",
+                    "inverse-primary": "#0a4c6e",
+                    "surface-tint": "#7dd3fc",
+                    "surface-variant": "#1a2438",
+                    "outline": "#4a6070",
+                    "on-surface-variant": "#a0b4c4",
+                    "error-container": "#3d1414",
+                    "surface-container-high": "#1a2438",
+                    "surface-container-lowest": "#0a0e1a",
+                    "secondary-fixed": "#c0d8e8",
+                    "surface-bright": "#1a2438",
+                    "on-tertiary-fixed": "#1a002e",
+                    "surface-container": "#141c2e",
+                    "on-primary-fixed": "#001f2e",
+                    "inverse-surface": "#e0e8f0",
+                    "surface-container-highest": "#202c42",
+                    "on-secondary-container": "#c0d8e8",
+                    "on-primary": "#001f2e",
+                    "primary-fixed-dim": "#7dd3fc",
+                    "error": "#ff6b6b",
+                    "tertiary-fixed": "#e8d0ff",
+                    "primary-container": "#0e4d6e",
+                    "on-secondary": "#001f2e",
+                    "on-tertiary-container": "#e8d0ff",
+                    "on-background": "#e0e8f0",
+                    "background": "#0a0e1a",
+                    "secondary-fixed-dim": "#88b4cc",
+                    "secondary": "#88b4cc",
+                    "tertiary-container": "#3d2060",
+                    "on-tertiary-fixed-variant": "#4d2a73",
+                    "on-surface": "#e0e8f0",
+                    "on-secondary-fixed": "#0d1f2b",
+                    "tertiary": "#c8a0f0",
+                    "on-error": "#1a0000",
+                    "tertiary-fixed-dim": "#c8a0f0",
+                    "on-primary-fixed-variant": "#004d73",
+                    "outline-variant": "#2a3a48",
+                    "surface": "#0f1524"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "display": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0e1a;
+            color: #e0e8f0;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(15, 21, 36, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(125, 211, 252, 0.1);
+        }
+        .glass-panel-elevated {
+            background: rgba(15, 21, 36, 0.75);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(125, 211, 252, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-subtle {
+            box-shadow: 0 0 30px rgba(125, 211, 252, 0.05);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0e1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1a2438;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center">
+<!-- Top Navigation (Shell suppressed for Transactional View) -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 dark:bg-surface-dim/60 backdrop-blur-xl border-b border-primary/10 shadow-[0_0_30px_rgba(125,211,252,0.05)] flex items-center justify-between px-6 py-4">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-primary/10 transition-colors duration-300 active:scale-95" onclick="history.back()">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">arrow_back_ios_new</span>
+</button>
+<h1 class="text-xl font-bold tracking-tighter text-on-surface dark:text-on-background">Transaction Detail</h1>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-primary/10 transition-colors duration-300 active:scale-95">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">share</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-2xl px-6 pt-24 pb-32 flex flex-col gap-8">
+<!-- Animated Background Fragment -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+
+</div>
+<!-- Amount Display Section -->
+<section class="flex flex-col items-center justify-center py-8 gap-2">
+<div class="glass-panel p-4 rounded-full mb-4">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+</div>
+<h2 class="text-5xl font-extrabold tracking-tight text-on-surface">$124.50</h2>
+<p class="text-on-surface-variant font-medium">Grocery &amp; Essentials</p>
+</section>
+<!-- Details Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Date & Time -->
+<div class="glass-panel p-6 rounded-xl flex items-center gap-4 glow-subtle">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">Date &amp; Time</p>
+<p class="text-on-surface font-medium">Oct 24, 2023 • 04:15 PM</p>
+</div>
+</div>
+<!-- Merchant/Note -->
+<div class="glass-panel p-6 rounded-xl flex items-center gap-4 glow-subtle">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">storefront</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">Merchant</p>
+<p class="text-on-surface font-medium truncate">Whole Foods Market</p>
+</div>
+</div>
+<!-- Payment Method -->
+<div class="glass-panel p-6 rounded-xl flex items-center gap-4 glow-subtle">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">credit_card</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">Paid With</p>
+<p class="text-on-surface font-medium">Apple Pay (••72)</p>
+</div>
+</div>
+<!-- Status -->
+<div class="glass-panel p-6 rounded-xl flex items-center gap-4 glow-subtle">
+<div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-400">check_circle</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">Status</p>
+<p class="text-on-surface font-medium">Cleared</p>
+</div>
+</div>
+</section>
+<!-- Receipt Section -->
+<section class="flex flex-col gap-4">
+<h3 class="text-sm font-semibold text-on-surface-variant px-2">ATTACHED RECEIPT</h3>
+<div class="relative group cursor-pointer">
+<div class="glass-panel rounded-2xl overflow-hidden aspect-[4/3] relative">
+<img alt="Grocery Receipt" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="A high-resolution, close-up photograph of a retail grocery receipt lying on a dark, polished stone surface. The lighting is moody and dramatic with cold blue highlights, reflecting the dark glacier UI aesthetic. The receipt shows detailed lines of text and price figures, partially blurred at the edges for a premium depth-of-field effect. Small crystalline ice-like particles are scattered near the receipt, enhancing the atmospheric frozen light theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdxQySNP5Q8E-kZeEfDmPVeGd7kN7IjJ3UPWeLQhXHJu3I89SrpjmemMypmMqI7gQbBhp1B0V-tvbOdxaDzyweLz23ZnzJxYOfa_OzauSZqx9won6wjv51hmAMId_DQYplSImMB5OyWbcjoFmY4-rv8G9eGF420m6ZCiETQEuvx11BYh5wYmd0QDzgxxq5ecqVywka2JJwqBWwBh7Cz3X2jYGDfBHNSGf-1Gw-FUK7u47scfsCoKgbR9bhJSLwK1Z6y5X_MD0TfJg"/>
+<div class="absolute inset-0 backdrop-blur-[2px] bg-background/20"></div>
+<div class="absolute inset-0 flex items-center justify-center flex-col gap-2">
+<span class="material-symbols-outlined text-4xl text-primary-fixed/80">zoom_in</span>
+<span class="text-xs font-medium text-primary-fixed/60 uppercase tracking-widest">Tap to expand</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Notes Section -->
+<section class="glass-panel p-6 rounded-2xl">
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold mb-3">Personal Note</p>
+<p class="text-on-surface leading-relaxed italic">
+                "Weekly organic grocery run. Includes items for Saturday dinner party. Reimbursable by Mark for half of the beverage cost ($12.00)."
+            </p>
+</section>
+</main>
+<!-- Bottom Actions (Floating Glass Bar) -->
+<footer class="fixed bottom-8 w-[calc(100%-3rem)] max-w-lg z-50">
+<div class="glass-panel-elevated rounded-2xl p-4 flex gap-4 shadow-2xl">
+<button class="flex-1 bg-surface-variant/50 hover:bg-surface-variant border border-outline/20 text-on-surface-variant py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-xl">edit</span>
+                Edit
+            </button>
+<button class="flex-1 bg-error-container/20 hover:bg-error-container/40 border border-error/20 text-error py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-xl">delete</span>
+                Delete
+            </button>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for the receipt image
+        document.querySelector('.group')?.addEventListener('click', () => {
+            console.log('Expand receipt view');
+            // Logic for a full-screen modal could go here
+        });
+
+        // Add subtle parallax to the main content based on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const amount = 5;
+            const x = (e.clientX / window.innerWidth - 0.5) * amount;
+            const y = (e.clientY / window.innerHeight - 0.5) * amount;
+            document.querySelector('main').style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        });
+    </script>
+</body></html>
