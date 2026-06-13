@@ -23,8 +23,8 @@ Ledgerly is a cross-platform mobile application that allows users to record inco
 ## 🛠️ Tech Stack
 
 - **Framework**: Flutter (Dart)
-- **State Management**: Provider / Bloc
-- **Local Database**: SQLite (sqflite) / Hive
+- **State Management**: Provider 
+- **Local Database**: shared_preferences
 - **Charts**: fl_chart
 - **Authentication**: Firebase Auth (or local auth)
 - **Date Handling**: intl
